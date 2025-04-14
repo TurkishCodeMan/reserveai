@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReservAI - Oteller İçin Yapay Zeka Rezervasyon Asistanı</title>
+    <meta name="description" content="ReservAI, otel işletmenizin rezervasyon süreçlerini otomatikleştiren, personel iş yükünü azaltan ve doluluk oranlarını artıran yapay zeka destekli asistan çözümü.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://placehold.co/32x32/4a90e2/FFFFFF?text=RB" type="image/x-icon">
+    
+    <!-- CSS Dosyaları -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/mobile-menu.css">
+    
+    <!-- AOS Animasyon Kütüphanesi -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Mobil Menü için Acil Düzeltme (Geçici Inline CSS) -->
+    <style>
+        /* Geçici CSS kodu kaldırıldı - mobile-menu.css dosyasına taşındı */
+    </style>
+</head>
+<body>
+    <!-- Sayfa Yükleyici -->
+    <div class="loader-container">
+        <div class="loader">
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <p>ReservAI yükleniyor...</p>
+        </div>
+    </div>
+    
+    <!-- Özel Cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Başa Dön Butonu -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <a href="#home" class="logo">
+                    <img src="https://placehold.co/150x40/FFFFFF/4a90e2?text=ReservAI" alt="ReservAI Logo">
+                  
+                </a>
+                
+                <nav class="nav-menu">
+                    <!-- Mobil menü toggle butonu -->
+                    <button type="button" class="mobile-toggle" id="mobileToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <!-- Overlay (arka plan) -->
+                    <div class="nav-overlay" id="navOverlay"></div>
+                    
+                    <!-- Menü öğeleri - Mobil cihazlarda sağdan kayarak açılacak -->
+                    <ul class="nav-items" id="navItems">
+                        <li><a href="#home" class="nav-link active">Ana Sayfa</a></li>
+                        <li><a href="#features" class="nav-link">Özellikler</a></li>
+                        <li><a href="#how-it-works" class="nav-link">Nasıl Çalışır</a></li>
+                        <li><a href="#demo" class="nav-link">Demo</a></li>
+                        <li><a href="#stats" class="nav-link">İstatistikler</a></li>
+                        <li><a href="#testimonials" class="nav-link">Yorumlar</a></li>
+                        <li><a href="#contact" class="nav-link">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Bölümü -->
+    <section id="home" class="hero-section">
+        <div class="tech-grid"></div>
+        <div class="particles-container">
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+            <div class="particle particle-4"></div>
+            <div class="particle particle-5"></div>
+            <div class="particle particle-6"></div>
+            <div class="particle particle-7"></div>
+            <div class="particle particle-8"></div>
+        </div>
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1 class="hero-title">Otelinizin Rezervasyon Süreçlerini <span class="gradient-text">Yapay Zeka</span> ile Otomatikleştirin</h1>
+                    <p class="hero-description">ReservAI, otelinizin rezervasyon işlemlerini otomatikleştiren, personel iş yükünü azaltan ve müşteri memnuniyetini artıran yapay zeka destekli bir çözümdür. 7/24 çalışarak hiçbir rezervasyon fırsatını kaçırmazsınız.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#demo" class="btn btn-primary pulse">Demoyu İnceleyin</a>
+                        <a href="#how-it-works" class="btn btn-outline">Nasıl Çalışır</a>
+                    </div>
+                    
+                    <div class="hero-features">
+                        <div class="hero-feature" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-rocket"></i>
+                            <span>Operasyonel Verimlilik</span>
+                        </div>
+                        <div class="hero-feature" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Doluluk Oranı Artışı</span>
+                        </div>
+                        <div class="hero-feature" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-headset"></i>
+                            <span>7/24 Müşteri Desteği</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="https://placehold.co/550x450/ECF0F1/333333?text=Otel+Yönetim" alt="RezerveBot Otel Yönetim Paneli" class="main-image">
+                    
+                    <div class="floating-element elem-1">
+                        <img src="https://placehold.co/60x60/50e3c2/FFFFFF?text=Verim" alt="Operasyonel Verimlilik">
+                    </div>
+                    <div class="floating-element elem-2">
+                        <img src="https://placehold.co/60x60/f5a623/FFFFFF?text=24/7" alt="7/24 Hizmet">
+                    </div>
+                    <div class="floating-element elem-3">
+                        <img src="https://placehold.co/60x60/4a90e2/FFFFFF?text=Analiz" alt="Detaylı Analitik">
+                    </div>
+                    <div class="floating-element elem-4">
+                        <img src="https://placehold.co/60x60/E74C3C/FFFFFF?text=Entegre" alt="Kolay Entegrasyon">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wave-shape">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill-opacity="1" d="M0,128L48,117.3C96,107,192,85,288,96C384,107,480,149,576,149.3C672,149,768,107,864,90.7C960,75,1056,85,1152,90.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Özellikler Bölümü -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Otel İşletmenize Özel Çözümler</h2>
+                <p class="section-description">ReservAI'ın otelinize sunduğu benzersiz özellikleri keşfedin ve rezervasyon operasyonlarınızı dönüştürün.</p>
+            </div>
+            
+            <div class="features-wrapper">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">Yapay Zeka Asistanı</h3>
+                    <p class="feature-description">Resepsiyonistlerinizin iş yükünü azaltan, 7/24 müşteri sorularını ve rezervasyon taleplerini yanıtlayan akıllı asistan.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Otomatik Müsaitlik Kontrolü</h3>
+                    <p class="feature-description">Google Tablolar ile entegre çalışarak anlık oda müsaitliği kontrolü yapabilir ve fiyat bilgisi verebilir.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="feature-title">Doğrudan Rezervasyon</h3>
+                    <p class="feature-description">Komisyon ödemeden, müşterilerin doğrudan rezervasyon yapmasını sağlar, maliyetlerinizi düşürür.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="feature-title">Çoklu Dil Desteği</h3>
+                    <p class="feature-description">Yabancı misafirlerinize kendi dillerinde destek vererek global erişiminizi artırır ve müşteri memnuniyetini yükseltir.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="feature-title">Analitik ve Raporlama</h3>
+                    <p class="feature-description">Rezervasyon trendleri, doluluk oranları ve müşteri talepleri hakkında değerli içgörüler sunar.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="feature-title">Kolay Entegrasyon</h3>
+                    <p class="feature-description">Mevcut otel yönetim sisteminize (PMS) kolayca entegre olarak, ek bir yazılım maliyeti oluşturmaz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Nasıl Çalışır Bölümü -->
+    <section id="how-it-works" class="how-works-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Nasıl Çalışır</h2>
+                <p class="section-description">ReservAI'ı otelinize entegre etmek ve kullanmak sadece birkaç adım alır, sonrasında her şey otomatik ilerler.</p>
+            </div>
+            
+            <div class="process-wrapper">
+                <div class="process-steps">
+                    <div class="process-step" data-aos="fade-right">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Hızlı Kurulum ve Entegrasyon</h3>
+                            <p class="step-description">ReservAI'ı WhatsApp Business, web siteniz veya diğer kanallarınıza kolayca entegre edin.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-line" id="processLine1"></div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Oda Bilgilerinizi Senkronize Edin</h3>
+                            <p class="step-description">Oda tipleri, fiyatlar ve müsaitlik verileri için Google Tablolar entegrasyonumuzu kullanın.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-line" id="processLine2"></div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="200">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">7/24 Müşteri Hizmeti Başlasın</h3>
+                            <p class="step-description">Asistanımız otelinize gelen tüm rezervasyon sorularını ve talepleri otomatik olarak yanıtlar.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-line" id="processLine3"></div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Rezervasyon ve Analiz</h3>
+                            <p class="step-description">Rezervasyonlar otomatik olarak sisteminize kaydedilir ve detaylı analiz raporları alırsınız.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="process-image" data-aos="fade-left">
+                    <img src="https://placehold.co/500x400/ECF0F1/333333?text=Otel+Entegrasyonu" alt="ReservAI Otel Entegrasyonu">
+                    <div class="play-button" id="playDemoVideo">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- İstatistikler Bölümü -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="stats-wrapper">
+                <div class="stat-card" data-aos="fade-up">
+                    <div class="stat-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-count" data-count="250">0</h3>
+                        <p class="stat-title">Otel Partneri</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-count" data-count="35">0</h3>
+                        <p class="stat-title">Operasyonel Maliyet Azalışı</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-count" data-count="42">0</h3>
+                        <p class="stat-title">Doluluk Oranı Artışı</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 class="stat-count" data-count="98">0</h3>
+                        <p class="stat-title">Müşteri Memnuniyeti</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Demo Bölümü -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">ReservAI'ın Müşterilerinizle Etkileşimini Görün</h2>
+                <p class="section-description">Yapay zeka asistanımızın otelinize gelen rezervasyon taleplerini nasıl yönettiğini aşağıdaki demo ile keşfedin.</p>
+            </div>
+            
+            <div class="demo-wrapper">
+                <div class="chat-container" data-aos="fade-up">
+                    <div class="chat-header">
+                        <div class="chat-avatar">
+                            <img src="https://placehold.co/45x45/4a90e2/FFFFFF?text=Bot" alt="ReservAI Avatar">
+                        </div>
+                        <div class="chat-info">
+                            <h3>ReservAI - Demo Otel</h3>
+                            <p>Otel adına yanıt veriyor</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            Merhaba! Ben Demo Otel'in rezervasyon asistanıyım. Size nasıl yardımcı olabilirim? Oda müsaitliği, fiyatlar veya özel talepleriniz için sorabilirsiniz.
+                        </div>
+                        
+                        <!-- Demo mesajları JavaScript ile eklenecek -->
+                    </div>
+                    
+                    <div class="chat-form">
+                        <input type="text" id="userMessage" placeholder="Mesajınızı yazın..." disabled>
+                        <button type="button" id="sendMessage" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="demo-content" data-aos="fade-up">
+                    <h3>Müşteri Senaryoları</h3>
+                    <p>Aşağıdaki örnek müşteri sorularını seçerek asistanın nasıl yanıt verdiğini görün:</p>
+                    
+                    <div class="demo-buttons">
+                        <button class="demo-button" data-message="15-18 Haziran tarihleri arasında 2 kişilik oda müsait mi?">
+                            Oda müsaitliği kontrolü
+                        </button>
+                        <button class="demo-button" data-message="Superior oda ile standart oda arasındaki fark nedir?">
+                            Oda tipleri hakkında bilgi
+                        </button>
+                        <button class="demo-button" data-message="Otelde havuz ve spa hizmetleri var mı?">
+                            Tesis olanakları sorgusu
+                        </button>
+                        <button class="demo-button" data-message="Rezervasyonumu iptal etmek istiyorum, nasıl yapabilirim?">
+                            Rezervasyon iptali
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Yorumlar Bölümü -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Otel Partnerleri Ne Diyor?</h2>
+                <p class="section-description">ReservAI'ı kullanan otel işletmelerinin deneyimleri ve elde ettikleri sonuçlar.</p>
+            </div>
+            
+            <div class="testimonials-slider" id="testimonialsSlider" data-aos="fade-up">
+                <div class="slider-container" id="sliderContainer">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"ReservAI, resepsiyon ekibimizin iş yükünü %40 oranında azalttı. Artık personelimiz daha kaliteli misafir ilişkilerine odaklanabiliyor. Doluluk oranımız arttı ve operasyonel maliyetlerimiz azaldı."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/60x60/cccccc/FFFFFF?text=Hotel" alt="Ahmet Yılmaz">
+                            <div class="author-info">
+                                <h4>Ahmet Yılmaz</h4>
+                                <p>Genel Müdür, Sunset Hotel İstanbul</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Butik otelimize ReservAI'ı entegre etmek çok kolay oldu. Artık gecenin bir yarısında gelen rezervasyon taleplerine bile anında yanıt verebiliyoruz. Müşteri memnuniyetimiz arttı ve rezervasyon kaçırma oranımız sıfıra indi."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/60x60/cccccc/FFFFFF?text=Hotel" alt="Zeynep Kaya">
+                            <div class="author-info">
+                                <h4>Zeynep Kaya</h4>
+                                <p>İşletme Sahibi, Marina Butik Otel Bodrum</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Özellikle yurtdışından gelen misafirlerimiz için çoklu dil desteği büyük avantaj sağladı. Sistemle entegrasyonu çok kolay oldu ve 7/24 çalışan bir asistana sahip olmak, personel maliyetlerimizi önemli ölçüde düşürdü."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/60x60/cccccc/FFFFFF?text=Hotel" alt="Mehmet Demir">
+                            <div class="author-info">
+                                <h4>Mehmet Demir</h4>
+                                <p>Operasyon Müdürü, Grand Resort Antalya</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Google Sheets entegrasyonu sayesinde oda müsaitliğimizi güncel tutmak çok kolay. OTA kanallarına ödediğimiz komisyonlar azaldı ve doğrudan rezervasyon oranımız %35 arttı. Kesinlikle her otelin sahip olması gereken bir teknoloji."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/60x60/cccccc/FFFFFF?text=Hotel" alt="Ayşe Öztürk">
+                            <div class="author-info">
+                                <h4>Ayşe Öztürk</h4>
+                                <p>Satış Direktörü, Blue Bay Resort & Spa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-arrow prev" id="prevSlide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="slider-dots" id="sliderDots">
+                        <!-- Dots burada JavaScript ile oluşturulacak -->
+                    </div>
+                    <button class="slider-arrow next" id="nextSlide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- İletişim Bölümü -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Oteliniz İçin Bilgi Alın</h2>
+                <p class="section-description">ReservAI'ı otelinize nasıl entegre edebileceğinizi öğrenmek için bizimle iletişime geçin.</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>E-posta</h3>
+                            <p>huseyinaltikulac4@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>0544 415 45 88</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adres</h3>
+                            <p>Malatya Merkez Efe Yazılım</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container" data-aos="fade-left">
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/huseyinaltikulac4@gmail.com" method="POST">
+                        <!-- FormSubmit.co gizli alanları -->
+                        <input type="hidden" name="_subject" value="ReservAI - Yeni Demo Talebi - Hüseyin ALTIKULAÇ">
+                        <input type="hidden" name="_next" value="https://reservai.com/tesekkurler.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="form-group">
+                            <label for="name">İsim Soyisim</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-posta</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hotel">Otel Adı</label>
+                            <input type="text" id="hotel" name="hotel" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rooms">Oda Sayısı</label>
+                            <select id="rooms" name="rooms" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-100">51-100</option>
+                                <option value="100+">100+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mesajınız / Talepleriniz</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Ücretsiz Demo Talebi</button>
+                        
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="tech-grid"></div>
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">ReservAI ile İşbirliği Yapın</h2>
+                <p class="section-description">Otel işletmenizi geleceğe taşıyacak rezervasyon asistanı çözümümüzle tanışın.</p>
+            </div>
+            
+            <div class="footer-wrapper">
+                <div class="footer-logo" data-aos="fade-up">
+                    <img src="https://placehold.co/150x45/FFFFFF/4a90e2?text=ReservAI" alt="ReservAI Logo">
+                    <p>Otel işletmeleri için yapay zeka destekli rezervasyon asistanı.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-links-column" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Hızlı Bağlantılar</h3>
+                        <ul>
+                            <li><a href="#home">Ana Sayfa</a></li>
+                            <li><a href="#features">Özellikler</a></li>
+                            <li><a href="#how-it-works">Nasıl Çalışır</a></li>
+                            <li><a href="#demo">Demo</a></li>
+                            <li><a href="#contact">İletişim</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-column" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Otel Çözümleri</h3>
+                        <ul>
+                            <li><a href="#">PMS Entegrasyonu</a></li>
+                            <li><a href="#">Google Sheets Bağlantısı</a></li>
+                            <li><a href="#">WhatsApp Business API</a></li>
+                            <li><a href="#">Web Sitenize Entegrasyon</a></li>
+                            <li><a href="#">Analitik Raporlar</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-column" data-aos="fade-up" data-aos-delay="300">
+                        <h3>Yasal</h3>
+                        <ul>
+                            <li><a href="#">Gizlilik Politikası</a></li>
+                            <li><a href="#">Kullanım Şartları</a></li>
+                            <li><a href="#">Çerez Politikası</a></li>
+                            <li><a href="#">KVKK</a></li>
+                            <li><a href="#">Yasal Uyarılar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ReservAI. Tüm hakları saklıdır.</p>
+                <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="payment-methods">
+                    <img src="https://placehold.co/200x25/FFFFFF/cccccc?text=Güvenli+Teknoloji" alt="Güvenli Teknoloji">
+                </div>
+            </div>
+        </div>
+        
+        <div class="wave-shape footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+            </svg>
+        </div>
+    </footer>
+    
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="video-container">
+                <iframe id="youtubeVideo" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JS Dosyaları -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Mobil Menü için Acil Düzeltme (Geçici Inline JS) -->
+    <!-- İnline script kaldırıldı, bu işlevsellik main.js'e taşındı -->
+    
+    <!-- Mobil Menü JS -->
+    <script src="assets/js/mobile-menu.js"></script>
+</body>
+</html> 

@@ -1,0 +1,587 @@
+/*
+* RezerveBot - Otel Rezervasyon Asistanı
+* Responsive Stil Dosyası
+*/
+
+/* Varsayılan Masaüstü Menü Stilleri - Yeni Eklendi */
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-items li {
+    margin: 0;
+    opacity: 1;
+    transform: none;
+}
+
+.nav-link {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+.mobile-toggle {
+    display: none; /* Masaüstü görünümde hamburger menü gizli */
+}
+
+.nav-overlay {
+    display: none; /* Masaüstü görünümde overlay gizli */
+}
+
+/* Tablet - Large (992px - 1199px) */
+@media screen and (max-width: 1199px) {
+    html {
+        font-size: 58%; /* Genel yazı tipi boyutu azaltıldı */
+    }
+    
+    .hero-title {
+        font-size: 4.8rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .demo-wrapper {
+        flex-direction: column;
+    }
+    
+    .demo-phone {
+        margin-bottom: 4rem;
+    }
+    
+    .contact-wrapper {
+        gap: 4rem;
+    }
+}
+
+/* Tablet - Medium (768px - 991px) - Mobil Menü Aktifleşiyor */
+@media screen and (max-width: 991px) {
+    html {
+        font-size: 56%;
+    }
+    
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-image {
+        margin-top: 4rem;
+    }
+    
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-content {
+        width: calc(50% - 4rem);
+    }
+    
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 4rem;
+    }
+    
+    .footer-links {
+        width: 100%;
+    }
+    
+    .footer-social {
+        width: 100%;
+    }
+
+    /* Mobil Menü Stilleri - 992px altındaki ekranlarda */
+    .mobile-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Desktop menü gizlenir */
+    #header .nav-menu {
+        /* Menü içeriği değişecek */
+    }
+    
+    #header .nav-items {
+        display: none; /* Masaüstü menü gizlenir */
+    }
+
+    /* Mobil menü aktifleştirilir */
+    .nav-overlay {
+        display: block; /* Overlay aktifleştirilir */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Tam ekran yükseklik - değiştirildi */
+        min-height: 100vh; /* Minimum yükseklik garantisi - eklendi */
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        height: 100vh !important; /* Tam yükseklik garantisi - eklendi */
+    }
+
+    /* Mobil menü paneli - Kapalı durumda ekranın dışında */
+    #navItems {
+        position: fixed;
+        top: 0;
+        right: -300px; /* Kapalı durumda ekranın dışında - artırıldı */
+        width: 300px; /* Genişlik artırıldı */
+        height: 100vh; /* ViewHeight olarak */
+        height: calc(var(--menu-height, 100vh)); /* var değerini calc ile sağlamlaştırdık */
+        min-height: 100vh; /* Minimum yükseklik garantisi */
+        max-height: none; /* max-height kısıtlamasını kaldırdık */
+        background-color: var(--accent-color-light);
+        z-index: 1000;
+        display: flex !important; /* Önemli! Görünür ama kapalı */
+        flex-direction: column;
+        padding: 8rem 2.5rem 4rem; /* Padding artırıldı */
+        transition: right 0.4s ease;
+        overflow-y: auto;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Mobil menü açıldığında */
+    #navItems.active {
+        right: 0;
+        height: 100vh !important; /* Açıldığında tam yükseklik garantisi */
+    }
+    
+    /* Mobil menü içi öğeler */
+    #navItems li {
+        margin: 1.2rem 0; /* Satır aralığı artırıldı */
+        width: 100%;
+        opacity: 0; 
+        transform: translateX(50px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    #navItems li a {
+        display: block;
+        font-size: 1.6rem; /* Font boyutu artırıldı */
+        padding: 1rem 1.5rem; /* Padding artırıldı */
+        color: var(--dark-color);
+        border-radius: var(--border-radius-medium);
+        transition: all 0.3s ease;
+    }
+    
+    #navItems li a:hover,
+    #navItems li a.active {
+        background-color: var(--accent-color);
+        color: white;
+        transform: translateX(5px);
+    }
+
+    /* Body scroll engelleme */
+    body.no-scroll {
+        overflow: hidden;
+    }
+
+    /* Header düzenlemeleri */
+    #header {
+        position: fixed;
+        backdrop-filter: blur(10px);
+    }
+    
+    /* Logo boyutu */
+    .logo {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile - Large (576px - 767px) */
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 54%;
+    }
+    
+    section {
+        padding: 6rem 0;
+    }
+    
+    .section-header {
+        margin-bottom: 4rem;
+    }
+    
+    .hero {
+        min-height: 60rem;
+    }
+    
+    .hero-title {
+        font-size: 3.6rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        margin-bottom: 6rem;
+    }
+    
+    .process-timeline::before {
+        left: 2rem;
+        height: calc(100% - 8rem);
+        top: 4rem;
+    }
+    
+    .process-number {
+        left: 2rem;
+        top: 0;
+        transform: none;
+    }
+    
+    .process-content {
+        width: 100%;
+        margin-top: 8rem;
+        text-align: left;
+    }
+    
+    .process-step:nth-child(odd) .process-content {
+        text-align: left;
+    }
+    
+    .process-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 2rem;
+    }
+    
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonial-author {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    /* Responsive Header/Nav Ayarları */
+    .nav-items {
+        max-width: 30rem; /* Biraz daha dar mobil menü */
+        padding: calc(var(--header-height) + 2rem) 2.5rem 4rem; /* Padding artırıldı */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100vh !important; /* Önemli: kuvvetli %100 yükseklik */
+        min-height: 100vh; /* Minimum yükseklik garantisi */
+        overflow-y: auto; /* Eğer içerik taşarsa kaydırma çubuğu göster */
+    }
+     #header {
+        padding: 2rem 0; /* Header padding ayarı */
+    }
+     #header.scrolled {
+        padding: 1.2rem 0;
+    }
+    .logo {
+        font-size: 2.2rem; /* Logo boyutu */
+    }
+    .logo img {
+        height: 3.5rem;
+    }
+}
+
+/* Mobile - Small (375px - 575px) */
+@media screen and (max-width: 575px) {
+    html {
+        font-size: 52%;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 3.2rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .back-to-top {
+        width: 4rem;
+        height: 4rem;
+        right: 1.5rem;
+        bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        font-size: 1.4rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: 2.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.6rem;
+    }
+    
+    .stat-count {
+        font-size: 3.6rem;
+    }
+    
+    /* Responsive Header/Nav Ayarları */
+     #header {
+        padding: 1.5rem 0;
+    }
+     #header.scrolled {
+        padding: 1rem 0;
+    }
+    .logo {
+        font-size: 2rem;
+    }
+     .logo img {
+        height: 3rem;
+    }
+    .mobile-toggle {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    .mobile-toggle span {
+        width: 2.2rem;
+        height: 2px;
+    }
+    /* Mobil toggle aktif durum boşlukları */
+    .mobile-toggle span:nth-child(1) { top: 0.8rem; }
+    .mobile-toggle span:nth-child(2) { top: 1.5rem; }
+    .mobile-toggle span:nth-child(3) { top: 2.2rem; }
+
+    .mobile-toggle.active span:nth-child(1) { top: 1.5rem; }
+    .mobile-toggle.active span:nth-child(3) { top: 1.5rem; }
+
+     .nav-items {
+        max-width: 28rem;
+        padding-top: calc(var(--header-height) + 1.5rem);
+        padding-bottom: 4rem; /* Bottom padding ekledim */
+        height: 100vh; /* Tam ekran yüksekliği */
+    }
+     .nav-items .nav-link {
+        font-size: 1.7rem;
+        padding: 1rem; /* Menü linklerini daha kolay tıklanabilir yap */
+        width: 100%; /* Menü linklerini tam genişlikte yap */
+        display: block;
+    }
+}
+
+/* Çok Küçük Ekranlar (375px altı) */
+@media screen and (max-width: 374px) {
+    html {
+        font-size: 50%;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .testimonial-quote {
+        padding: 1.5rem;
+    }
+    
+    .footer-links-column h3 {
+        font-size: 1.6rem;
+    }
+    
+    .contact-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .contact-icon i {
+        font-size: 1.8rem;
+    }
+}
+
+/* Yüksek Çözünürlüklü Ekranlar (1200px ve üstü) */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 120rem;
+    }
+}
+
+/* Çok Geniş Ekranlar (1400px ve üstü) */
+@media screen and (min-width: 1400px) {
+    html {
+        font-size: 65%;
+    }
+    
+    .container {
+        max-width: 135rem;
+    }
+}
+
+/* Baskı Stili */
+@media print {
+    .header,
+    .footer,
+    .back-to-top,
+    .cta,
+    .custom-cursor,
+    .loader,
+    .demo-phone,
+    .contact-form,
+    .testimonials,
+    .tech-grid {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: #000;
+        background-color: #fff;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+    
+    .hero,
+    .features,
+    .how-it-works,
+    .contact {
+        padding: 1cm 0;
+    }
+    
+    .hero .container,
+    .features-grid,
+    .process-step,
+    .contact-wrapper {
+        display: block;
+    }
+    
+    .hero-title {
+        font-size: 24pt;
+    }
+    
+    .feature-card,
+    .process-content,
+    .contact-item {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+        margin-bottom: 1cm;
+    }
+    
+    .feature-card::before {
+        display: none;
+    }
+    
+    .process-timeline::before {
+        display: none;
+    }
+    
+    .section-title::after {
+        display: none;
+    }
+} 
+
+/* iOS ve mobil için 100vh düzeltmesi */
+@supports (-webkit-touch-callout: none) {
+    /* iOS cihazlar için özel düzeltme */
+    .nav-items {
+        height: -webkit-fill-available;
+    }
+    
+    /* Düzgün scroll için ek ayarlar */
+    html, body {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* JavaScript var olmadığında veya çalışmadığında */
+.no-js .mobile-toggle {
+    display: none;
+}
+
+.no-js .nav-items {
+    display: flex;
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    padding: 0;
+} 
